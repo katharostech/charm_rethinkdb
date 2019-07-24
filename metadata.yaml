@@ -7,9 +7,7 @@ series:
 description: |
   Realtime, scalable NoSQL database.
 tags:
-  # Replace "misc" with one or more whitelisted tags from this list:
-  # https://jujucharms.com/docs/stable/authors-charm-metadata
-  - misc
+  - database
 subordinate: false
 provides:
   reql:
