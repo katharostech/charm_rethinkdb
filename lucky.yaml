@@ -1,0 +1,3 @@
+hooks:
+  config-changed:
+    - host-script: update.sh

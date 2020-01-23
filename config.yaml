@@ -1,0 +1,21 @@
+options:
+  bind:
+    type: string
+    default: all
+    description: The address to bind on or "all"
+  bind-http:
+    type: string
+    default: 127.0.0.1
+    description: The address to bind the web GUI on
+  http-port:
+    type: int
+    default: 8080
+    description: Port for web administration console
+  cluster-port:
+    type: int
+    default: 29015
+    description: Port for receiving connections from other nodes
+  driver-port:
+    type: int
+    default: 28015
+    description: Port for RethinkDB protocol client drivers
