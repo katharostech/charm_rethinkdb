@@ -1,3 +1,8 @@
 hooks:
   config-changed:
     - host-script: update.sh
+  start:
+    - inline-host-script: lucky kv set start_server true
+    - host-script: update.sh
+  cluster-peers-relation-changed:
+    - host-script: update.sh
