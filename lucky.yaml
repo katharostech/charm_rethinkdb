@@ -1,8 +1,31 @@
 hooks:
   config-changed:
     - host-script: update.sh
+    - host-script: update-reql-relation.sh
+      args:
+        - update-config
   start:
     - inline-host-script: lucky kv set start_server true
     - host-script: update.sh
   cluster-peers-relation-changed:
     - host-script: update.sh
+    - host-script: update-reql-relation.sh
+      args:
+        - update-config
+  cluster-peers-relation-broken:
+    - host-script: update.sh
+    - host-script: update-reql-relation.sh
+      args:
+        - update-config
+  leader-elected:
+    - host-script: update.sh
+    - host-script: update-reql-relation.sh
+      args:
+        - update-config
+  leader-settings-changed:
+    - host-script: update.sh
+    - host-script: update-reql-relation.sh
+      args:
+        - update-config
+  reql-relation-changed:
+    - host-script: update-reql-relation.sh

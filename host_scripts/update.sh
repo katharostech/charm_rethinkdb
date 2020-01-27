@@ -14,17 +14,10 @@ bind_http=$(lucky get-config bind-http)
 http_port=$(lucky get-config http-port)
 cluster_port=$(lucky get-config cluster-port)
 driver_port=$(lucky get-config driver-port)
-private_address=$(lucy private-address)
+private_address=$(lucky private-address)
 
 # Collect peers
-peers=""
-for relation_id in $(lucky relation list-ids --relation-name cluster-peers); do
-    for related_unit in $(lucky relation list-units -r $relation_id); do
-        addr=$(lucky relation get -r $relation_id -u $related_unit private-address)
-        
-        peers="$peers $addr:$cluster_port"
-    done
-done
+peers=$(./bin/get-peers.sh)
 
 # If we are not the leader and we don't have any peers then don't start server
 if [ "$peers" = "" -a "$(lucky leader is-leader)" = "false" ]; then
@@ -76,6 +69,8 @@ done
 
 # Set commandline arguments
 lucky container set-entrypoint rethinkdb
+# TODO: Update the `--cluster-bind` so that the cluster won't allow cluster joins from oustide
+# the private network.
 lucky container set-command -- \
     --bind $bind \
     --bind-http $bind_http \
@@ -83,7 +78,6 @@ lucky container set-command -- \
     --cluster-port $cluster_port \
     --driver-port $driver_port \
     --canonical-address $private_address \
-    --bind-cluster $private_address \
     --initial-password $initial_password \
     $join_args
 

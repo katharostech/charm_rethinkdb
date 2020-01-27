@@ -2,6 +2,8 @@ name: rethinkdb
 display-name: RethinkDB
 summary: Realtime, scalable NoSQL database.
 maintainer: Zicklag <zicklag@katharostech.com>
+series:
+  - bionic
 description: |
   Realtime, scalable NoSQL database.
 tags:
