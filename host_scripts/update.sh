@@ -17,7 +17,7 @@ driver_port=$(lucky get-config driver-port)
 private_address=$(lucky private-address)
 
 # Collect peers
-peers=$(./bin/get-peers.sh)
+peers=$(./bin/get-peers.sh cluster)
 
 # If we are not the leader and we don't have any peers then don't start server
 if [ "$peers" = "" -a "$(lucky leader is-leader)" = "false" ]; then
