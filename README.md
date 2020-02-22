@@ -22,6 +22,6 @@ Currently the `reql` interface is under development and it will eventually suppo
 
 #### Keys
 
-- `servers`: Servers will be the list of rethinkdb IP addresses and ports separated by spaces. For example: `192.168.106.133:29015 192.168.106.12:29015`.
+- `servers`: Servers will be the list of rethinkdb IP addresses with driver port separated by spaces. For example: `192.168.106.133:28015 192.168.106.12:28015`.
 - `user`: Currently this is always `admin`.
 - `password`: The password for the provided user.

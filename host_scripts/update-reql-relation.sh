@@ -11,9 +11,9 @@ if [ ! "$(lucky leader is-leader)" = "true" ]; then
 fi
 
 # Add peer addresses
-servers=$(./bin/get-peers.sh)
+servers=$(./bin/get-peers.sh driver)
 # Add our own address
-servers="$servers $(lucky private-address):$(lucky get-config cluster-port)"
+servers="$servers $(lucky private-address):$(lucky get-config driver-port)"
 # Get password
 password=$(lucky leader get admin_password)
 # Get user ( hardcoded for now )
