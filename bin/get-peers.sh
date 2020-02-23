@@ -2,16 +2,16 @@
 set -e
 
 # Make sure context parameter was given
-if [ -z ${1} ]; then
+if [ -z "${1}" ]; then
     echo "Usage: ${0} CONTEXT{ cluster | driver }"
     echo "Either 'cluster' or 'driver' context argument must be provided"
     exit 1
 fi 
 
 # Get the configured port
-if [ ${1} == "cluster" ]; then
+if [ "${1}" == "cluster" ]; then
     port=$(lucky get-config cluster-port)
-elif [ ${1} == "driver" ]; then
+elif [ "${1}" == "driver" ]; then
     port=$(lucky get-config driver-port)
 else
     echo "Invalid CONTEXT argument provided"
